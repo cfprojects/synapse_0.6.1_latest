@@ -1,0 +1,24 @@
+0.6.1
+Fixed: added <cfset LOCAL.child = javaCast("null",0)> to load(),getChildren(),getSiblings() to fix return of same value for sibling and children
+0.6
+10 April 2011
+Enhancements:
+- useCache(true/false) can be used in the SynapseConfig.cfc (ie. the SynapseFactory.cfc) to turn the use of caching on and off.
+- create(), update(), delete(), now returning Boolean value of last Interceptor called.
+- moved persistSiblingLinks call in the save function so it only calls if the beforeSynapseSave() interceptor is true
+Fixed:
+- fixed defect '1 - Join table field reset' by drastically changing persistSiblings(). Columns were wiped out on saving sibling links. It now only adds new ones,and deletes missing ones. As such this operation just became a whole lot more expensive due to the compares needed. Another change is that you have to make sure you setLinkingForeignKeyNameGoesHere('') to a blank string to 
+=================================================================
+0.5
+17 March 2011
+Enhancements:
+-Included a new function getPersistedValues() in SynapseBean which gets the values persisted to the database for that object and returns them in a struct.
+=================================================================
+0.4
+27 February
+Enhancements:
+- Introduced getLinkValue() and setLinkValue(value) for getting and setting values in custom columns in many-to-many (sibling) linking tables.
+=================================================================
+0.1 - 0.3
+before release
+=================================================================
